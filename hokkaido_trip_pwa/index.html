@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#183b3f">
+<title>홋카이도 5박 6일 · 2026.10.01–10.06</title>
+<style>
+:root{
+  --bg:#f5f2ea; --card:#fffdf8; --ink:#203033; --muted:#718083;
+  --green:#183b3f; --green2:#2d6262; --cream:#eee5d4;
+  --line:#ddd8cd; --orange:#c87942; --blue:#47758a; --shadow:0 8px 24px rgba(38,45,42,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans KR","Apple SD Gothic Neo",sans-serif;line-height:1.5}
+button{font:inherit}
+.wrap{max-width:720px;margin:auto;padding-bottom:90px}
+.hero{background:var(--green);color:#fff;padding:34px 20px 26px;border-radius:0 0 28px 28px}
+.kicker{font-size:12px;letter-spacing:.14em;opacity:.72;font-weight:700}
+h1{font-size:29px;line-height:1.2;margin:8px 0 8px;letter-spacing:-.04em}
+.hero p{margin:0;color:#dce8e5;font-size:14px}
+.route{margin-top:20px;padding:14px 15px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);border-radius:15px;font-size:13px;line-height:1.75}
+.route b{display:block;font-size:11px;opacity:.7;margin-bottom:2px}
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.stat{background:rgba(255,255,255,.08);padding:10px 8px;border-radius:13px;text-align:center}
+.stat strong{display:block;font-size:16px}.stat span{font-size:10px;color:#d4dfdd}
+.tabs{position:sticky;top:0;z-index:20;background:rgba(245,242,234,.94);backdrop-filter:blur(10px);padding:10px 16px;border-bottom:1px solid rgba(0,0,0,.04)}
+.tabs-inner{display:flex;gap:7px;overflow:auto;scrollbar-width:none}.tabs-inner::-webkit-scrollbar{display:none}
+.tab{white-space:nowrap;border:1px solid var(--line);background:#fffaf2;color:var(--muted);border-radius:99px;padding:7px 12px;font-size:12px;text-decoration:none}
+.tab:first-child{background:var(--green);color:white;border-color:var(--green)}
+section{padding:22px 16px 0}
+.section-title{display:flex;align-items:end;justify-content:space-between;margin-bottom:12px}
+.section-title h2{font-size:19px;margin:0;letter-spacing:-.03em}.section-title span{font-size:11px;color:var(--muted)}
+.day{scroll-margin-top:58px;margin:0 16px 14px;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
+.day-head{padding:17px 17px 15px;background:linear-gradient(135deg,#f0e7d7,#fbf8f0);border-bottom:1px solid var(--line)}
+.day-label{font-size:11px;color:var(--orange);font-weight:800;letter-spacing:.08em}.day-head h3{font-size:21px;margin:2px 0 3px;letter-spacing:-.04em}
+.day-meta{font-size:12px;color:var(--muted)}
+.stay{margin-top:10px;font-size:12px}.stay b{color:var(--ink)}
+.timeline{padding:7px 14px 12px}
+.item{display:grid;grid-template-columns:47px 14px 1fr;gap:8px;min-height:48px}
+.time{font-size:12px;font-weight:750;color:var(--green);padding-top:13px;text-align:right}
+.dotcol{position:relative;display:flex;justify-content:center}
+.dotcol:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green2);margin-top:16px;z-index:2}
+.item:not(:last-child) .dotcol:after{content:"";position:absolute;top:24px;bottom:-3px;width:1px;background:#d7ddd8}
+.event{padding:9px 0 10px;border-bottom:1px solid #eee9df}.item:last-child .event{border-bottom:0}
+.event-main{font-size:14px;font-weight:650;letter-spacing:-.02em}
+.event-note{font-size:11px;color:var(--muted);margin-top:2px}
+.badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
+.badge{font-size:10px;padding:3px 7px;border-radius:7px;background:#eef2ef;color:#48605d}
+.badge.drive{background:#e9f0f3;color:#416676}.badge.food{background:#f7eadf;color:#9a5c35}.badge.alert{background:#f8e5df;color:#a55442}
+.foods{padding:0 16px 22px}
+.food-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 13px;margin-bottom:8px}
+.food-place{font-weight:750;font-size:13px}.food-menu{font-size:11px;color:var(--muted);margin-top:2px}
+.food-area{font-size:10px;color:var(--orange);font-weight:800;margin-bottom:3px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.info{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px}
+.info h3{font-size:13px;margin:0 0 5px}.info p{font-size:11px;color:var(--muted);margin:0}
+.notice{background:#fff8e9;border:1px solid #ead8b4;border-radius:16px;padding:13px;margin:0 16px 12px;font-size:12px}
+.notice b{display:block;margin-bottom:3px;color:#81562d}
+
+.actionbar{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.action{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:1px solid #d8d8d0;background:#fff;border-radius:9px;padding:6px 9px;font-size:10px;font-weight:700;color:#36585a;cursor:pointer}
+.action.map{background:#edf4f4}.action.search{background:#f5efe7}.action.route{background:#edf1f6}
+.place-actions{margin-top:6px}
+.location-box{margin:0 16px 12px;background:#eef5f3;border:1px solid #cdded9;border-radius:17px;padding:14px}
+.location-box h3{font-size:14px;margin:0 0 4px}
+.location-box p{font-size:11px;color:#637572;margin:0 0 9px}
+.location-result{font-size:12px;font-weight:700;margin-top:8px}
+
+.footer{text-align:center;color:#9a9a91;font-size:10px;padding:28px 16px}
+@media(min-width:721px){.hero{border-radius:0 0 32px 32px}.day{margin-left:0;margin-right:0}.tabs{padding-left:calc((100% - 720px)/2 + 16px);padding-right:calc((100% - 720px)/2 + 16px)}}
+
+/* Trip editor - does not alter the original timeline layout */
+.edit-fab{position:fixed;right:14px;bottom:18px;z-index:80;border:0;background:#183b3f;color:#fff;border-radius:999px;padding:12px 16px;font-size:12px;font-weight:800;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.edit-mode .item-edit-tools{display:flex}
+.item-edit-tools{display:none;gap:5px;margin-top:7px}
+.item-edit-tools button{border:1px solid #ddd8cd;background:#fffaf2;border-radius:8px;padding:5px 8px;font-size:10px;color:#586566}
+.day-editbar{display:none;padding:0 14px 13px}
+.edit-mode .day-editbar{display:block}
+.day-add{width:100%;border:1px dashed #b8c7c3;background:#f6faf8;color:#36585a;border-radius:11px;padding:9px;font-size:11px;font-weight:750}
+.custom-item .event-main{font-weight:700}
+.custom-label{font-size:9px;font-weight:800;color:#9a5c35;background:#f7eadf;border-radius:6px;padding:2px 5px;margin-left:4px;vertical-align:1px}
+.edit-modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(18,28,29,.48);padding:18px;align-items:flex-end;justify-content:center}
+.edit-modal.show{display:flex}
+.edit-sheet{width:min(100%,560px);background:#fffdf8;border-radius:22px 22px 14px 14px;padding:18px;box-shadow:0 18px 50px rgba(0,0,0,.25)}
+.edit-sheet h3{margin:0 0 13px;font-size:18px}
+.edit-field{margin-bottom:10px}.edit-field label{display:block;font-size:10px;font-weight:800;color:#718083;margin-bottom:4px}
+.edit-field input,.edit-field textarea{width:100%;border:1px solid #d9d5cb;background:#fff;border-radius:10px;padding:10px 11px;font:inherit;font-size:13px;color:#203033}
+.edit-field textarea{min-height:68px;resize:vertical}
+.edit-actions{display:flex;gap:8px;margin-top:13px}.edit-actions button{flex:1;border:0;border-radius:11px;padding:10px;font-weight:800}
+.edit-cancel{background:#ece9e2;color:#586566}.edit-save{background:#183b3f;color:#fff}
+.backup-panel{margin:0 16px 12px;background:#fffdf8;border:1px solid #ddd8cd;border-radius:17px;padding:14px}
+.backup-panel h3{font-size:14px;margin:0 0 4px}.backup-panel p{font-size:11px;color:#718083;margin:0 0 9px}
+.backup-actions{display:flex;gap:6px;flex-wrap:wrap}.backup-actions button,.backup-actions label{border:1px solid #d8d8d0;background:#fff;border-radius:9px;padding:7px 9px;font-size:10px;font-weight:700;color:#36585a;cursor:pointer}
+
+.offline-pill{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:45;
+background:#183b3f;color:#fff;border-radius:99px;padding:7px 11px;font-size:10px;font-weight:800;
+box-shadow:0 5px 18px rgba(0,0,0,.16);opacity:.94}
+</style>
+
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
+<meta name="theme-color" content="#183b3f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="홋카이도 여행">
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div class="kicker">HOKKAIDO ROAD TRIP · 5 NIGHTS 6 DAYS</div>
+  <h1>홋카이도 여행</h1>
+  <p>2026. 10. 01 — 10. 06 · 렌터카 여행</p>
+  <div class="route"><b>전체 동선</b>신치토세 → 후라노 → 아사히다케 → 비에이 → 오비히로 → 노보리베쓰 → 도야호 → 오타루 → 삿포로 → 신치토세</div>
+  <div class="summary">
+    <div class="stat"><strong>5박 6일</strong><span>10/01–10/06</span></div>
+    <div class="stat"><strong>렌터카</strong><span>신치토세 수령/반납</span></div>
+    <div class="stat"><strong>먹방 + 온천</strong><span>지역별 맛집</span></div>
+  </div>
+</header>
+
+<nav class="tabs"><div class="tabs-inner">
+  <a class="tab" href="#day1">DAY 1</a><a class="tab" href="#day2">DAY 2</a><a class="tab" href="#day3">DAY 3</a>
+  <a class="tab" href="#day4">DAY 4</a><a class="tab" href="#day5">DAY 5</a><a class="tab" href="#day6">DAY 6</a><a class="tab" href="#food">맛집</a>
+</div></nav>
+
+<section>
+  <div class="section-title"><h2>여행 일정</h2><span>시간순으로 보기</span></div>
+</section>
+
+<div class="day" id="day1">
+  <div class="day-head"><div class="day-label">DAY 01 · 10/01 THU</div><h3>신치토세 → 후라노</h3><div class="day-meta">첫날은 이동 후 후라노에서 휴식</div><div class="stay">🏨 <b>신후라노 호텔</b> · 후라노시</div></div>
+  <div class="timeline">
+    <div class="item"><div class="time">12:00</div><div class="dotcol"></div><div class="event"><div class="event-main">김해공항 도착</div></div></div>
+    <div class="item"><div class="time">14:10</div><div class="dotcol"></div><div class="event"><div class="event-main">김해공항 출발</div><div class="event-note">이스타항공 ZE951</div><div class="badges"><span class="badge">✈️ 비행</span></div></div></div>
+    <div class="item"><div class="time">16:40</div><div class="dotcol"></div><div class="event"><div class="event-main">신치토세 공항 도착</div></div></div>
+    <div class="item"><div class="time">17:00</div><div class="dotcol"></div><div class="event"><div class="event-main">렌터카 수령</div></div></div>
+    <div class="item"><div class="time">18:00</div><div class="dotcol"></div><div class="event"><div class="event-main">후라노 도착 · 호텔 체크인</div><div class="event-note">신후라노 호텔</div><div class="badges"><span class="badge drive">🚗 이동</span></div></div></div>
+    <div class="item"><div class="time">19:00</div><div class="dotcol"></div><div class="event"><div class="event-main">저녁 · 후라노 현지식</div><div class="badges"><span class="badge food">🍴 오므카레 + 치즈두부</span></div></div></div>
+    <div class="item"><div class="time">20:00</div><div class="dotcol"></div><div class="event"><div class="event-main">돈키호테 쇼핑</div><div class="event-note">여행 중 필요한 것 미리 구입</div></div></div>
+    <div class="item"><div class="time">21:00</div><div class="dotcol"></div><div class="event"><div class="event-main">편의점 털기 → 호텔 야식</div></div></div>
+    <div class="item"><div class="time">22:00</div><div class="dotcol"></div><div class="event"><div class="event-main">호텔 휴식 · 일찍 취침</div></div></div>
+  </div>
+</div>
+
+<div class="day" id="day2">
+  <div class="day-head"><div class="day-label">DAY 02 · 10/02 FRI</div><h3>아사히다케 → 비에이 → 오비히로</h3><div class="day-meta">산 + 비에이 + 장거리 이동</div><div class="stay">🏨 <b>다이이치 호텔</b> · 오비히로시</div></div>
+  <div class="timeline">
+    <div class="item"><div class="time">07:00</div><div class="dotcol"></div><div class="event"><div class="event-main">기상 · 조식</div></div></div>
+    <div class="item"><div class="time">09:00</div><div class="dotcol"></div><div class="event"><div class="event-main">아사히다케 도착</div><div class="event-note">약 1시간</div><div class="badges"><span class="badge drive">🚗 이동</span><div class="actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=旭岳+北海道">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=旭岳+北海道">🔎 검색</a>
+    </div></div></div></div>
+    <div class="item"><div class="time">10:00</div><div class="dotcol"></div><div class="event"><div class="event-main">아사히다케 등산</div></div></div>
+    <div class="item"><div class="time">11:00</div><div class="dotcol"></div><div class="event"><div class="event-main">하산</div></div></div>
+    <div class="item"><div class="time">12:00</div><div class="dotcol"></div><div class="event"><div class="event-main">팜 토미타 · 비에이 방목낙농장</div><div class="event-note">팜 토미타(토미타 멜론하우스) · 방목낙농장 소프트아이스크림</div><div class="badges"><span class="badge food">🍈 멜론</span><span class="badge food">🍦 소프트아이스크림</span><div class="actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=ファーム富田+富良野">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=ファーム富田+富良野">🔎 검색</a>
+    </div></div></div></div>
+    <div class="item"><div class="time">13:00</div><div class="dotcol"></div><div class="event"><div class="event-main">청의호수 · 시라히게폭포</div><div class="event-note">여유가 되면 방문</div><div class="badges"><span class="badge alert">선택 일정</span><div class="actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=青い池+美瑛">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=青い池+美瑛">🔎 검색</a>
+    </div></div></div></div>
+    <div class="item"><div class="time">16:00</div><div class="dotcol"></div><div class="event"><div class="event-main">오비히로 출발</div><div class="event-note">약 2시간 30분 · 다이이치 호텔까지</div><div class="badges"><span class="badge drive">🚗 장거리 이동</span><div class="actionbar">
+      <a class="action route" target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=비에이+오비히로">🚗 길찾기</a>
+    </div></div></div></div>
+    <div class="item"><div class="time">18:00</div><div class="dotcol"></div><div class="event"><div class="event-main">오비히로 도착 · 저녁</div><div class="badges"><span class="badge food">🍚 부타동</span></div></div></div>
+    <div class="item"><div class="time">21:00</div><div class="dotcol"></div><div class="event"><div class="event-main">다이이치 호텔 온천</div></div></div>
+    <div class="item"><div class="time">00:00</div><div class="dotcol"></div><div class="event"><div class="event-main">취침</div></div></div>
+  </div>
+</div>
+
+<div class="day" id="day3">
+  <div class="day-head"><div class="day-label">DAY 03 · 10/03 SAT</div><h3>오비히로 → 노보리베쓰 → 도야호</h3><div class="day-meta">맛집 + 지옥계곡 + 도야호</div><div class="stay">🏨 <b>니세코 노던 리조트</b> · 도야호 인근</div></div>
+  <div class="timeline">
+    <div class="item"><div class="time">07:00</div><div class="dotcol"></div><div class="event"><div class="event-main">기상 · 조식</div></div></div>
+    <div class="item"><div class="time">09:00</div><div class="dotcol"></div><div class="event"><div class="event-main">오비히로 시내 · 롯카테이</div><div class="badges"><span class="badge food">🍰 디저트</span></div></div></div>
+    <div class="item"><div class="time">11:00</div><div class="dotcol"></div><div class="event"><div class="event-main">노보리베쓰 출발</div><div class="event-note">약 2시간 40분</div><div class="badges"><span class="badge drive">🚗 장거리 이동</span><div class="actionbar">
+      <a class="action route" target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=오비히로+노보리베쓰">🚗 길찾기</a>
+    </div></div></div></div>
+    <div class="item"><div class="time">13:00</div><div class="dotcol"></div><div class="event"><div class="event-main">노보리베쓰 도착 · 점심</div><div class="event-note">야키소바 / 라멘</div><div class="badges"><span class="badge food">🍜 점심</span></div></div></div>
+    <div class="item"><div class="time">14:00</div><div class="dotcol"></div><div class="event"><div class="event-main">지옥계곡<div class="actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=登別地獄谷">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=登別地獄谷">🔎 검색</a>
+    </div></div></div></div>
+    <div class="item"><div class="time">16:00</div><div class="dotcol"></div><div class="event"><div class="event-main">도야호 출발</div><div class="event-note">약 45분<div class="actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=洞爺湖">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=洞爺湖">🔎 검색</a>
+    <div class="actionbar">
+      <a class="action route" target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=노보리베쓰+도야호">🚗 길찾기</a>
+    </div></div></div></div></div>
+    <div class="item"><div class="time">17:00</div><div class="dotcol"></div><div class="event"><div class="event-main">도야호 도착</div><div class="event-note">⚠️ 17시 전후 도착 목표</div><div class="badges"><span class="badge alert">시간 체크</span></div></div></div>
+    <div class="item"><div class="time">18:00</div><div class="dotcol"></div><div class="event"><div class="event-main">저녁 · 와규</div><div class="badges"><span class="badge food">🥩 와규</span></div></div></div>
+    <div class="item"><div class="time">22:00</div><div class="dotcol"></div><div class="event"><div class="event-main">니세코 노던 리조트 온천</div><div class="event-note">약 1시간 이동</div></div></div>
+    <div class="item"><div class="time">00:00</div><div class="dotcol"></div><div class="event"><div class="event-main">취침</div></div></div>
+  </div>
+</div>
+
+<div class="day" id="day4">
+  <div class="day-head"><div class="day-label">DAY 04 · 10/04 SUN</div><h3>도야호 → 오타루 → 삿포로</h3><div class="day-meta">오타루 산책 후 삿포로 입성</div><div class="stay">🏨 <b>JAL 호텔</b> · 삿포로 시내</div></div>
+  <div class="timeline">
+    <div class="item"><div class="time">07:00</div><div class="dotcol"></div><div class="event"><div class="event-main">기상 · 조식</div></div></div>
+    <div class="item"><div class="time">10:00</div><div class="dotcol"></div><div class="event"><div class="event-main">오타루 출발</div><div class="event-note">약 1시간 50분</div><div class="badges"><span class="badge drive">🚗 이동</span><div class="actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=小樽運河">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=小樽運河">🔎 검색</a>
+    <div class="actionbar">
+      <a class="action route" target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=도야호+오타루">🚗 길찾기</a>
+    </div></div></div></div></div>
+    <div class="item"><div class="time">12:00</div><div class="dotcol"></div><div class="event"><div class="event-main">오타루 도착 · 점심</div><div class="badges"><span class="badge food">🍣 카이센동</span></div></div></div>
+    <div class="item"><div class="time">13:00</div><div class="dotcol"></div><div class="event"><div class="event-main">사카이마치 거리</div></div></div>
+    <div class="item"><div class="time">15:00</div><div class="dotcol"></div><div class="event"><div class="event-main">오타루 운하</div></div></div>
+    <div class="item"><div class="time">19:00</div><div class="dotcol"></div><div class="event"><div class="event-main">저녁식사 · 오타루에서 먹고 출발 가능</div></div></div>
+    <div class="item"><div class="time">20:00</div><div class="dotcol"></div><div class="event"><div class="event-main">삿포로 JAL 호텔 이동</div><div class="event-note">약 30–45분</div><div class="badges"><span class="badge drive">🚗 이동</span><div class="actionbar">
+      <a class="action route" target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=오타루+삿포로">🚗 길찾기</a>
+    </div></div></div></div>
+    <div class="item"><div class="time">21:00</div><div class="dotcol"></div><div class="event"><div class="event-main">스스키노 밤거리 구경<div class="actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=すすきの+札幌">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=すすきの+札幌">🔎 검색</a>
+    </div></div></div></div>
+    <div class="item"><div class="time">00:00</div><div class="dotcol"></div><div class="event"><div class="event-main">취침</div></div></div>
+  </div>
+</div>
+
+<div class="day" id="day5">
+  <div class="day-head"><div class="day-label">DAY 05 · 10/05 MON</div><h3>삿포로 DAY</h3><div class="day-meta">시내 관광 + 쇼핑 + 먹방</div><div class="stay">🏨 <b>JAL 호텔</b> · 삿포로 시내</div></div>
+  <div class="timeline">
+    <div class="item"><div class="time">07:00</div><div class="dotcol"></div><div class="event"><div class="event-main">기상 · 조식</div></div></div>
+    <div class="item"><div class="time">10:00</div><div class="dotcol"></div><div class="event"><div class="event-main">오도리공원<div class="actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=大通公園+札幌">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=大通公園+札幌">🔎 검색</a>
+    </div></div></div></div>
+    <div class="item"><div class="time">11:00</div><div class="dotcol"></div><div class="event"><div class="event-main">삿포로 시계탑<div class="actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=札幌時計台">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=札幌時計台">🔎 검색</a>
+    </div></div></div></div>
+    <div class="item"><div class="time">12:00</div><div class="dotcol"></div><div class="event"><div class="event-main">삿포로 시내</div></div></div>
+    <div class="item"><div class="time">13:00</div><div class="dotcol"></div><div class="event"><div class="event-main">점심 · 스프카레</div><div class="badges"><span class="badge food">🍛 스프카레</span></div></div></div>
+    <div class="item"><div class="time">14:00</div><div class="dotcol"></div><div class="event"><div class="event-main">맥주박물관<div class="actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=サッポロビール博物館">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=サッポロビール博物館">🔎 검색</a>
+    </div></div></div></div>
+    <div class="item"><div class="time">15:00</div><div class="dotcol"></div><div class="event"><div class="event-main">다누키코지 쇼핑<div class="actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=狸小路商店街+札幌">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=狸小路商店街+札幌">🔎 검색</a>
+    </div></div></div></div>
+    <div class="item"><div class="time">17:00</div><div class="dotcol"></div><div class="event"><div class="event-main">호텔 복귀 · 휴식</div></div></div>
+    <div class="item"><div class="time">18:00</div><div class="dotcol"></div><div class="event"><div class="event-main">저녁 · 징기스칸</div><div class="badges"><span class="badge food">🥩 징기스칸</span></div></div></div>
+    <div class="item"><div class="time">20:00</div><div class="dotcol"></div><div class="event"><div class="event-main">밤거리 · 돈키호테 마지막 쇼핑</div></div></div>
+  </div>
+</div>
+
+<div class="day" id="day6">
+  <div class="day-head"><div class="day-label">DAY 06 · 10/06 TUE</div><h3>삿포로 → 신치토세 → 부산</h3><div class="day-meta">렌터카 반납 후 귀국</div></div>
+  <div class="timeline">
+    <div class="item"><div class="time">14:00</div><div class="dotcol"></div><div class="event"><div class="event-main">렌터카 반납 · 공항 도착</div><div class="badges"><span class="badge drive">🚗 마지막 이동</span></div></div></div>
+    <div class="item"><div class="time">17:40</div><div class="dotcol"></div><div class="event"><div class="event-main">신치토세공항 출발</div><div class="event-note">이스타항공 ZE952</div><div class="badges"><span class="badge">✈️ 귀국</span></div></div></div>
+    <div class="item"><div class="time">21:00</div><div class="dotcol"></div><div class="event"><div class="event-main">김해공항 도착</div><div class="event-note">이스타항공 ZE952</div></div></div>
+  </div>
+</div>
+
+
+<section id="tools">
+  <div class="section-title"><h2>🧭 여행 도구</h2><span>필요할 때만 인터넷 연결</span></div>
+</section>
+
+<div class="location-box">
+  <h3>📍 현재 위치 확인</h3>
+  <p>아이폰의 GPS 위치를 확인해 현재 위치를 지도 앱에서 바로 열 수 있어.</p>
+  <div class="actionbar">
+    <button class="action map" onclick="getLocation()">📍 현재 위치</button>
+    <a class="action map" href="http://maps.apple.com/" target="_blank">🍎 Apple 지도</a>
+    <a class="action map" href="https://www.google.com/maps/" target="_blank">🗺️ Google Maps</a>
+  </div>
+  <div id="locationResult" class="location-result"></div>
+</div>
+
+<div class="location-box">
+  <h3>🌤️ 날씨 확인</h3>
+  <p>페이지에 저장된 일정은 오프라인으로 볼 수 있고, 최신 날씨가 필요할 때만 검색해.</p>
+  <div class="actionbar">
+    <a class="action" href="https://www.google.com/search?q=후라노+날씨" target="_blank">후라노</a>
+    <a class="action" href="https://www.google.com/search?q=비에이+날씨" target="_blank">비에이</a>
+    <a class="action" href="https://www.google.com/search?q=오비히로+날씨" target="_blank">오비히로</a>
+    <a class="action" href="https://www.google.com/search?q=노보리베쓰+날씨" target="_blank">노보리베쓰</a>
+    <a class="action" href="https://www.google.com/search?q=도야호+날씨" target="_blank">도야호</a>
+    <a class="action" href="https://www.google.com/search?q=오타루+날씨" target="_blank">오타루</a>
+    <a class="action" href="https://www.google.com/search?q=삿포로+날씨" target="_blank">삿포로</a>
+  </div>
+</div>
+
+<section id="food">
+  <div class="section-title"><h2>🍴 먹을 것 후보</h2><span>지역별 저장</span></div>
+</section>
+<div class="foods">
+  <div class="grid">
+    <div class="food-card"><div class="food-area">후라노</div><div class="food-place">쿠마게라</div><div class="food-menu">오므카레 + 치즈두부</div><div class="place-actions actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=쿠마게라+홋카이도">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=쿠마게라+홋카이도">🔎 검색</a>
+    </div></div>
+    <div class="food-card"><div class="food-area">후라노</div><div class="food-place">후라노 델리스</div><div class="food-menu">우유푸딩 / 치즈케이크</div><div class="place-actions actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=후라노+델리스+홋카이도">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=후라노+델리스+홋카이도">🔎 검색</a>
+    </div></div>
+    <div class="food-card"><div class="food-area">비에이</div><div class="food-place">토미타 멜론하우스</div><div class="food-menu">멜론</div><div class="place-actions actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=토미타+멜론하우스+홋카이도">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=토미타+멜론하우스+홋카이도">🔎 검색</a>
+    </div></div>
+    <div class="food-card"><div class="food-area">비에이</div><div class="food-place">카페 준페이</div><div class="food-menu">새우튀김 / 준독</div><div class="place-actions actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=카페+준페이+홋카이도">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=카페+준페이+홋카이도">🔎 검색</a>
+    </div></div>
+    <div class="food-card"><div class="food-area">비에이</div><div class="food-place">비에이 방목낙농장</div><div class="food-menu">우유 / 소프트아이스크림</div><div class="place-actions actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=비에이+방목낙농장+홋카이도">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=비에이+방목낙농장+홋카이도">🔎 검색</a>
+    </div></div>
+    <div class="food-card"><div class="food-area">비에이</div><div class="food-place">다이마루</div><div class="food-menu">비에이 카레우동</div><div class="place-actions actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=다이마루+홋카이도">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=다이마루+홋카이도">🔎 검색</a>
+    </div></div>
+    <div class="food-card"><div class="food-area">오비히로</div><div class="food-place">とん田 (톤다)</div><div class="food-menu">부타동</div><div class="place-actions actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=とん田+(톤다)+홋카이도">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=とん田+(톤다)+홋카이도">🔎 검색</a>
+    </div></div>
+    <div class="food-card"><div class="food-area">오비히로</div><div class="food-place">부타동 판초</div><div class="food-menu">부타동 원조</div><div class="place-actions actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=부타동+판초+홋카이도">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=부타동+판초+홋카이도">🔎 검색</a>
+    </div></div>
+    <div class="food-card"><div class="food-area">오비히로</div><div class="food-place">롯카테이 오비히로 본점</div><div class="food-menu">사쿠사쿠파이 / 디저트</div><div class="place-actions actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=롯카테이+오비히로+본점+홋카이도">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=롯카테이+오비히로+본점+홋카이도">🔎 검색</a>
+    </div></div>
+    <div class="food-card"><div class="food-area">노보리베쓰</div><div class="food-place">엔마켄</div><div class="food-menu">엔마라멘</div><div class="place-actions actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=엔마켄+홋카이도">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=엔마켄+홋카이도">🔎 검색</a>
+    </div></div>
+    <div class="food-card"><div class="food-area">도야호</div><div class="food-place">THE TOYA</div><div class="food-menu">와규</div><div class="place-actions actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=THE+TOYA+홋카이도">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=THE+TOYA+홋카이도">🔎 검색</a>
+    </div></div>
+    <div class="food-card"><div class="food-area">도야호</div><div class="food-place">아페코로</div><div class="food-menu">와규</div><div class="place-actions actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=아페코로+홋카이도">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=아페코로+홋카이도">🔎 검색</a>
+    </div></div>
+    <div class="food-card"><div class="food-area">도야호</div><div class="food-place">Lake-Hill Farm</div><div class="food-menu">젤라토</div><div class="place-actions actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Lake-Hill+Farm+홋카이도">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=Lake-Hill+Farm+홋카이도">🔎 검색</a>
+    </div></div>
+    <div class="food-card"><div class="food-area">오타루</div><div class="food-place">마사즈시 본점</div><div class="food-menu">스시 / 샤코</div><div class="place-actions actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=마사즈시+본점+홋카이도">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=마사즈시+본점+홋카이도">🔎 검색</a>
+    </div></div>
+    <div class="food-card"><div class="food-area">오타루</div><div class="food-place">르타오 본점</div><div class="food-menu">더블 프로마쥬</div><div class="place-actions actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=르타오+본점+홋카이도">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=르타오+본점+홋카이도">🔎 검색</a>
+    </div></div>
+    <div class="food-card"><div class="food-area">삿포로</div><div class="food-place">GARAKU</div><div class="food-menu">스프카레</div><div class="place-actions actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=GARAKU+홋카이도">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=GARAKU+홋카이도">🔎 검색</a>
+    </div></div>
+    <div class="food-card"><div class="food-area">삿포로</div><div class="food-place">멘야 사이미</div><div class="food-menu">미소라멘</div><div class="place-actions actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=멘야+사이미+홋카이도">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=멘야+사이미+홋카이도">🔎 검색</a>
+    </div></div>
+    <div class="food-card"><div class="food-area">삿포로</div><div class="food-place">다루마</div><div class="food-menu">징기스칸</div><div class="place-actions actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=다루마+홋카이도">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=다루마+홋카이도">🔎 검색</a>
+    </div></div>
+    <div class="food-card"><div class="food-area">삿포로</div><div class="food-place">DONGURI</div><div class="food-menu">치쿠와빵</div><div class="place-actions actionbar">
+      <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=DONGURI+홋카이도">📍 지도</a>
+      <a class="action search" target="_blank" href="https://www.google.com/search?q=DONGURI+홋카이도">🔎 검색</a>
+    </div></div>
+  </div>
+</div>
+
+
+<div class="backup-panel">
+  <h3>💾 일정 변경사항</h3>
+  <p>추가·수정·삭제한 일정은 이 기기에 저장돼. 필요하면 백업 파일로 저장할 수 있어.</p>
+  <div class="backup-actions">
+    <button type="button" onclick="tripExport()">⬇️ 백업</button>
+    <label>⬆️ 불러오기<input id="tripImport" type="file" accept=".json,application/json" hidden></label>
+    <button type="button" onclick="tripReset()">↩️ 원래대로</button>
+  </div>
+</div>
+<div class="notice"><b>🚗 이동 일정 체크</b>DAY 2·3은 장거리 이동이 많아서 관광지 체류시간에 따라 뒤 일정이 밀릴 수 있음. 특히 DAY 3 도야호 17시 도착 목표를 우선 체크.</div>
+<div class="footer">Hokkaido Trip · 2026.10.01–10.06<br>여행 일정은 실제 교통·영업시간에 따라 조정</div>
+</div>
+
+<script>
+function getLocation(){
+  const el=document.getElementById('locationResult');
+  if(!navigator.geolocation){
+    el.textContent='이 브라우저에서는 위치 기능을 지원하지 않아.';
+    return;
+  }
+  el.textContent='현재 위치를 확인하는 중…';
+  navigator.geolocation.getCurrentPosition(
+    pos=>{
+      const lat=pos.coords.latitude.toFixed(6);
+      const lon=pos.coords.longitude.toFixed(6);
+      el.innerHTML=`📍 ${lat}, ${lon}<div class="actionbar" style="margin-top:7px">
+        <a class="action map" target="_blank" href="http://maps.apple.com/?ll=${lat},${lon}">🍎 Apple 지도에서 보기</a>
+        <a class="action map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${lat},${lon}">🗺️ Google Maps에서 보기</a>
+      </div>`;
+    },
+    err=>{
+      const msg = err.code===1 ? '위치 권한이 허용되지 않았어. 아이폰 설정에서 Safari의 위치 권한을 확인해줘.' : '현재 위치를 가져오지 못했어.';
+      el.textContent=msg;
+    },
+    {enableHighAccuracy:true,timeout:10000,maximumAge:60000}
+  );
+}
+</script>
+
+<button class="edit-fab" id="editFab" type="button" onclick="toggleTripEdit()">✏️ 일정 편집</button>
+<div class="edit-modal" id="tripModal">
+  <div class="edit-sheet">
+    <h3 id="tripModalTitle">일정 추가</h3>
+    <input id="tripDay" type="hidden"><input id="tripId" type="hidden">
+    <div class="edit-field"><label>시간</label><input id="tripTime" type="time"></div>
+    <div class="edit-field"><label>일정 / 장소</label><input id="tripTitle" placeholder="예: 르타오 본점"></div>
+    <div class="edit-field"><label>메모</label><textarea id="tripNote" placeholder="예: 더블 프로마쥬 먹기"></textarea></div>
+    <div class="edit-actions"><button class="edit-cancel" type="button" onclick="closeTripModal()">취소</button><button class="edit-save" type="button" onclick="saveTripItem()">저장</button></div>
+  </div>
+</div>
+
+<script>
+(function(){
+const KEY='hokkaido_trip_edits_v4';
+let editMode=false;
+
+function readState(){
+  try{return JSON.parse(localStorage.getItem(KEY)||'{"custom":[],"changed":{},"deleted":[]}')
+  }catch(e){return {custom:[],changed:{},deleted:[]}}
+}
+function writeState(s){try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){}}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function getDayNum(day){return Number(day.dataset.day||day.id.replace('day',''))}
+function getMain(item){
+  const el=item.querySelector('.event-main');
+  if(!el)return '';
+  const clone=el.cloneNode(true);
+  clone.querySelectorAll('.custom-label,.item-edit-tools').forEach(x=>x.remove());
+  return clone.textContent.trim();
+}
+function getNote(item){return item.querySelector('.event-note')?.textContent.trim()||''}
+
+function setupEditor(){
+  document.querySelectorAll('.day').forEach(day=>{
+    const n=getDayNum(day);
+    const timeline=day.querySelector('.timeline');
+    if(!timeline)return;
+    timeline.querySelectorAll('.item').forEach((item,i)=>{
+      item.dataset.baseId='d'+n+'-'+i;
+      const event=item.querySelector('.event');
+      if(event && !event.querySelector('.item-edit-tools')){
+        const tools=document.createElement('div');
+        tools.className='item-edit-tools';
+        tools.innerHTML='<button type="button">✏️ 수정</button><button type="button">🗑️ 삭제</button>';
+        tools.children[0].onclick=()=>openEditBase(item);
+        tools.children[1].onclick=()=>deleteBase(item);
+        event.appendChild(tools);
+      }
+    });
+    const bar=document.createElement('div');
+    bar.className='day-editbar';
+    bar.innerHTML='<button type="button" class="day-add">＋ 이 날 일정 추가</button>';
+    bar.querySelector('button').onclick=()=>openAdd(n);
+    day.appendChild(bar);
+  });
+  applyState();
+}
+
+function toggleTripEdit(){
+  editMode=!editMode;
+  document.body.classList.toggle('edit-mode',editMode);
+  document.getElementById('editFab').textContent=editMode?'✓ 편집 완료':'✏️ 일정 편집';
+}
+
+function openAdd(day){
+  document.getElementById('tripModalTitle').textContent='일정 추가';
+  document.getElementById('tripDay').value=day;
+  document.getElementById('tripId').value='';
+  document.getElementById('tripTime').value='';
+  document.getElementById('tripTitle').value='';
+  document.getElementById('tripNote').value='';
+  document.getElementById('tripModal').classList.add('show');
+}
+function openEditBase(item){
+  const s=readState(), id=item.dataset.baseId;
+  const current=s.changed[id]||{time:item.querySelector('.time').textContent.trim(),title:getMain(item),note:getNote(item)};
+  document.getElementById('tripModalTitle').textContent='일정 수정';
+  document.getElementById('tripDay').value=getDayNum(item.closest('.day'));
+  document.getElementById('tripId').value=id;
+  document.getElementById('tripTime').value=current.time;
+  document.getElementById('tripTitle').value=current.title;
+  document.getElementById('tripNote').value=current.note;
+  document.getElementById('tripModal').classList.add('show');
+}
+function openEditCustom(item){
+  const s=readState(), id=item.dataset.customId, x=s.custom.find(v=>v.id===id);
+  if(!x)return;
+  document.getElementById('tripModalTitle').textContent='일정 수정';
+  document.getElementById('tripDay').value=x.day; document.getElementById('tripId').value=id;
+  document.getElementById('tripTime').value=x.time; document.getElementById('tripTitle').value=x.title; document.getElementById('tripNote').value=x.note||'';
+  document.getElementById('tripModal').classList.add('show');
+}
+function closeTripModal(){document.getElementById('tripModal').classList.remove('show')}
+
+function saveTripItem(){
+  const day=Number(document.getElementById('tripDay').value);
+  const id=document.getElementById('tripId').value;
+  const time=document.getElementById('tripTime').value;
+  const title=document.getElementById('tripTitle').value.trim();
+  const note=document.getElementById('tripNote').value.trim();
+  if(!time||!title){alert('시간과 일정/장소를 입력해줘.');return}
+  const s=readState();
+  if(id && id.startsWith('custom-')){
+    const x=s.custom.find(v=>v.id===id);
+    if(x)Object.assign(x,{day,time,title,note});
+  }else if(id){
+    s.changed[id]={time,title,note};
+  }else{
+    s.custom.push({id:'custom-'+Date.now(),day,time,title,note});
+  }
+  writeState(s); closeTripModal(); applyState();
+}
+
+function deleteBase(item){
+  if(!confirm('이 원래 일정을 삭제할까?'))return;
+  const s=readState(), id=item.dataset.baseId;
+  if(!s.deleted.includes(id))s.deleted.push(id);
+  writeState(s); applyState();
+}
+function deleteCustom(item){
+  if(!confirm('추가한 일정을 삭제할까?'))return;
+  const s=readState(); s.custom=s.custom.filter(x=>x.id!==item.dataset.customId);
+  writeState(s); applyState();
+}
+
+function makeCustom(x){
+  const item=document.createElement('div');
+  item.className='item custom-item'; item.dataset.customId=x.id;
+  item.innerHTML=`<div class="time">${esc(x.time)}</div><div class="dotcol"></div><div class="event"><div class="event-main">${esc(x.title)}<span class="custom-label">추가</span></div>${x.note?`<div class="event-note">${esc(x.note)}</div>`:''}<div class="item-edit-tools"><button type="button">✏️ 수정</button><button type="button">🗑️ 삭제</button></div></div>`;
+  item.querySelectorAll('.item-edit-tools button')[0].onclick=()=>openEditCustom(item);
+  item.querySelectorAll('.item-edit-tools button')[1].onclick=()=>deleteCustom(item);
+  return item;
+}
+function sortTimeline(tl){
+  [...tl.querySelectorAll('.item')].sort((a,b)=>{
+    const ta=a.querySelector('.time')?.textContent.trim()||'99:99';
+    const tb=b.querySelector('.time')?.textContent.trim()||'99:99';
+    return ta.localeCompare(tb);
+  }).forEach(x=>tl.appendChild(x));
+}
+function applyState(){
+  const s=readState();
+  document.querySelectorAll('.day').forEach(day=>{
+    const n=getDayNum(day), tl=day.querySelector('.timeline');
+    if(!tl)return;
+    tl.querySelectorAll('.item').forEach(item=>{
+      if(item.classList.contains('custom-item'))item.remove();
+    });
+    tl.querySelectorAll('.item[data-base-id]').forEach(item=>{
+      const id=item.dataset.baseId;
+      const originalTime=item.dataset.originalTime||(item.dataset.originalTime=item.querySelector('.time').textContent.trim());
+      const originalTitle=item.dataset.originalTitle||(item.dataset.originalTitle=getMain(item));
+      const originalNote=item.dataset.originalNote??(item.dataset.originalNote=getNote(item));
+      item.style.display=s.deleted.includes(id)?'none':'grid';
+      const d=s.changed[id]||{time:originalTime,title:originalTitle,note:originalNote};
+      item.querySelector('.time').textContent=d.time;
+      const main=item.querySelector('.event-main');
+      const tools=main.querySelector('.custom-label'); if(tools)tools.remove();
+      [...main.childNodes].forEach(node=>{if(node.nodeType===3)node.remove()});
+      main.insertBefore(document.createTextNode(d.title),main.firstChild);
+      let note=item.querySelector('.event-note');
+      if(d.note){
+        if(!note){note=document.createElement('div');note.className='event-note';item.querySelector('.event').insertBefore(note,item.querySelector('.item-edit-tools'))}
+        note.textContent=d.note;
+      }else if(note)note.remove();
+    });
+    s.custom.filter(x=>Number(x.day)===n).forEach(x=>tl.appendChild(makeCustom(x)));
+    sortTimeline(tl);
+  });
+}
+function tripExport(){
+  const blob=new Blob([JSON.stringify(readState(),null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='hokkaido-trip-changes.json';a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function tripImportFile(file){
+  const r=new FileReader();
+  r.onload=()=>{try{const x=JSON.parse(r.result);if(!x||!Array.isArray(x.custom))throw 0;writeState(x);applyState();alert('백업을 불러왔어.')}catch(e){alert('올바른 백업 파일이 아니야.')}};
+  r.readAsText(file);
+}
+function tripReset(){
+  if(confirm('여행 중 추가·수정·삭제한 내용을 모두 지우고 원래 일정으로 돌아갈까?')){
+    try{localStorage.removeItem(KEY)}catch(e){}
+    location.reload();
+  }
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  setupEditor();
+  document.getElementById('tripImport')?.addEventListener('change',e=>{if(e.target.files[0])tripImportFile(e.target.files[0])});
+  document.getElementById('tripModal')?.addEventListener('click',e=>{if(e.target.id==='tripModal')closeTripModal()});
+});
+})();
+</script>
+<div class="offline-pill" id="offlinePill">● 오프라인 사용 가능</div>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
+const pill=document.getElementById('offlinePill');
+function updateNet(){
+  if(!pill)return;
+  pill.textContent=navigator.onLine ? '● 온라인 · 오프라인 저장됨' : '● 오프라인 모드';
+}
+window.addEventListener('online',updateNet);
+window.addEventListener('offline',updateNet);
+updateNet();
+</script>
+</body>
+</html>

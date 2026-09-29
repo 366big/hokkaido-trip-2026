@@ -1,0 +1,25 @@
+{
+  "name": "홋카이도 여행 2026",
+  "short_name": "홋카이도 여행",
+  "description": "2026.10.01–10.06 홋카이도 5박 6일 여행 일정",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f2ea",
+  "theme_color": "#183b3f",
+  "lang": "ko-KR",
+  "icons": [
+    {
+      "src": "icons/icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
